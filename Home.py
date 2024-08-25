@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 st.header("Home", anchor=None)
 
 # create two columns for row1 in the webpage
-column_left_row1, column_right_row1 = st.columns(2)
+column_left_row1, column_right_row1 = st.columns([0.5, 2])
 
 # First column and row1 content
 with column_left_row1:
@@ -32,7 +32,13 @@ with column_right_row1:
     for automotive.. 
     With over 9 years of experience in the automotive industry, 
     I have successfully led and managed teams and projects in product development, system engineering, and 
-    requirement analysis for ADAS and infotainment systems. """
+    requirement analysis for ADAS and infotainment systems. 
+    My core competencies include Embedded SW development (Python, C and C++)
+    Automotive SPICE (ASPICE), Agile Project Management, Product Operations, and System Architecture Framework. 
+    I hold an MBA in International Business and two MSc degrees in Automotive Engineering for Sustainable Mobility from 
+    prestigious institutions. My mission is to deliver high-quality, innovative, and customer-centric products that 
+    enhance the user experience and sustainability of mobility.
+    """
 
     description = st.info(content1)
 

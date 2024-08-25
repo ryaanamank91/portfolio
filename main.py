@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -11,15 +12,16 @@ column_left_row1, column_right_row1 = st.columns(2)
 
 # First column and row1 content
 with column_left_row1:
-    # image = st.image('images/photo.jpg')
+    image = st.image('images/photo.jpg')
+    # alternative method to open the image
     # Load image
-    img = Image.open('images/photo.jpg')
+    # img = Image.open('images/photo.jpg')
 
     # Resize the image
-    img_resized = img.resize((500, 600))  # width: 300px and height: 200px
+    # img_resized = img.resize((500, 600))  # width: 300px and height: 200px
 
     # Display the resized image
-    st.image(img_resized)
+    # st.image(img_resized)
 
 # Second Column and row1 content
 with column_right_row1:
@@ -39,3 +41,16 @@ content2 = """
 Below you can find some of the apps I have built in Python. Feel free to contact me!
 """
 brief = st.write(content2)
+
+# create two more columns for row3 in the webpage
+column_left_row3, column_right_row3 = st.columns(2)
+
+df = pandas.read_csv('data.csv', sep=';')
+
+with column_left_row3:
+    for index, row in df[:10].iterrows():
+        st.header(row['title'])
+
+with column_right_row3:
+    for index, row in df[10:].iterrows():
+        st.header(row['title'])

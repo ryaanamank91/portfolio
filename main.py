@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+# from PIL import Image
 import pandas
 
 st.set_page_config(layout="wide")
@@ -43,14 +43,21 @@ Below you can find some of the apps I have built in Python. Feel free to contact
 brief = st.write(content2)
 
 # create two more columns for row3 in the webpage
-column_left_row3, column_right_row3 = st.columns(2)
+column_left_row3, empty_column, column_right_row3 = st.columns([1.5, 0.5, 1.5])
 
+# to read data from .csv file and store it as a dataframe
 df = pandas.read_csv('data.csv', sep=';')
 
 with column_left_row3:
-    for index, row in df[:10].iterrows():
-        st.header(row['title'])
+    for index, row in df[:10].iterrows():  # divide the content of csv into 2 columns
+        st.header(row['title'])  # to write the titles from .csv file for first column
+        st.write(row['description'])  # to write the description from .csv file for the second column
+        st.image("images/" + row["image"])  # to generate images
+        st.write(f"[Source Code]({row['url']})")  # to insert the links
 
 with column_right_row3:
-    for index, row in df[10:].iterrows():
-        st.header(row['title'])
+    for index, row in df[10:].iterrows():  # divide the content of csv into 2 columns
+        st.header(row['title'])  # to write the titles from .csv file for the second column
+        st.write(row['description'])  # to write the description from .csv file for the second column
+        st.image("images/" + row["image"])  # to generate images
+        st.write(f"[Source Code]({row['url']})")  # to insert the links
